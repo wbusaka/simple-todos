@@ -1,7 +1,15 @@
 import { Template } from 'meteor/templating';
 import { Tasks } from '../api/tasks.js'; 
+import { ReactiveDict } from 'meteor/reactive-dict';
+
 import './body.html';
 import './task.js';
+
+Template.body.onCreated(function bodyOnCreated() {
+  this.state = new ReactiveDict();
+});
+ 
+
 Template.body.helpers({
  tasks() {
    // Show newest tasks at the top
